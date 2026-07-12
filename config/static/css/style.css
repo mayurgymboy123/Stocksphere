@@ -1,0 +1,20 @@
+body{
+    background: #f4f6f9;
+}
+
+.card{
+    border: none;
+    border-radius: 15px;
+}
+
+.card-header{
+    border-radius: 15px 15px 0 0 !important;
+}
+
+.btn-primary{
+    border-radius: 8px;
+}
+
+input{
+    border-radius: 8px !important;
+}
