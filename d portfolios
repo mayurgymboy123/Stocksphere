@@ -1,0 +1,28 @@
+                          List of relations
+ Schema |                Name                |   Type   |    Owner    
+--------+------------------------------------+----------+-------------
+ public | auth_group                         | table    | stocks_user
+ public | auth_group_id_seq                  | sequence | stocks_user
+ public | auth_group_permissions             | table    | stocks_user
+ public | auth_group_permissions_id_seq      | sequence | stocks_user
+ public | auth_permission                    | table    | stocks_user
+ public | auth_permission_id_seq             | sequence | stocks_user
+ public | companies                          | table    | stocks_user
+ public | companies_id_seq                   | sequence | stocks_user
+ public | django_admin_log                   | table    | stocks_user
+ public | django_admin_log_id_seq            | sequence | stocks_user
+ public | django_content_type                | table    | stocks_user
+ public | django_content_type_id_seq         | sequence | stocks_user
+ public | django_migrations                  | table    | stocks_user
+ public | django_migrations_id_seq           | sequence | stocks_user
+ public | django_session                     | table    | stocks_user
+ public | portfolios                         | table    | stocks_user
+ public | portfolios_id_seq                  | sequence | stocks_user
+ public | users_user                         | table    | stocks_user
+ public | users_user_groups                  | table    | stocks_user
+ public | users_user_groups_id_seq           | sequence | stocks_user
+ public | users_user_id_seq                  | sequence | stocks_user
+ public | users_user_user_permissions        | table    | stocks_user
+ public | users_user_user_permissions_id_seq | sequence | stocks_user
+(23 rows)
+

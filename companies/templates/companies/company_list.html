@@ -76,12 +76,15 @@ Companies
                 <a
                     href="{% url 'companies:edit_company' company.id %}"
                     class="btn btn-warning btn-sm">
-
                     Edit
+                </a>
+                <a
+                    href="{% url 'portfolio:buy_shares' company.id %}"
+                    class="btn btn-success btn-sm">
 
+                    Buy
                 </a>
             </td>
-
         </tr>
 
     {% empty %}

@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}
+Buy Shares
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-success text-white">
+            <h3 class="mb-0">
+                Buy Shares
+            </h3>
+        </div>
+
+        <div class="card-body">
+
+            <h4>{{ company.name }}</h4>
+
+            <p>
+                <strong>Symbol:</strong>
+                {{ company.symbol }}
+            </p>
+
+            <p>
+                <strong>Current Market Price:</strong>
+                ₹ {{ company.current_price }}
+            </p>
+
+            {% if company.logo %}
+                <img
+                    src="{{ company.logo.url }}"
+                    class="img-thumbnail mb-3"
+                    width="120">
+            {% endif %}
+
+            <hr>
+
+            <form method="post">
+
+                {% csrf_token %}
+
+                <!-- Quantity -->
+
+                <div class="mb-3">
+
+                    <label
+                        class="form-label"
+                        for="{{ form.quantity.id_for_label }}">
+
+                        Quantity
+
+                    </label>
+
+                    {{ form.quantity }}
+
+                    {% if form.quantity.errors %}
+                        <div class="text-danger">
+                            {{ form.quantity.errors }}
+                        </div>
+                    {% endif %}
+
+                </div>
+
+                <!-- Buy Price -->
+
+                <div class="mb-3">
+
+                    <label
+                        class="form-label"
+                        for="{{ form.buy_price.id_for_label }}">
+
+                        Buy Price
+
+                    </label>
+
+                    {{ form.buy_price }}
+
+                    {% if form.buy_price.errors %}
+                        <div class="text-danger">
+                            {{ form.buy_price.errors }}
+                        </div>
+                    {% endif %}
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn btn-success">
+
+                    Buy Shares
+
+                </button>
+
+                <a
+                    href="{% url 'companies:company_list' %}"
+                    class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

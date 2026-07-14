@@ -35,6 +35,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 # Application definition
 
 INSTALLED_APPS = [
+    'portfolio',
     'users',
     'companies',
     'django.contrib.admin',
