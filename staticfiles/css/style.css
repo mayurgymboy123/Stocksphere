@@ -1,0 +1,88 @@
+body{
+    margin:0;
+    background:#f4f7fb;
+    font-family:'Inter',sans-serif;
+}
+
+.app-layout{
+    display:flex;
+}
+
+.sidebar{
+    width:270px;
+    height:100vh;
+    background:linear-gradient(180deg,#111827,#1e293b);
+    position:fixed;
+    left:0;
+    top:0;
+    overflow-y:auto;
+    box-shadow:5px 0 25px rgba(0,0,0,.15);
+}
+
+.brand{
+    padding:30px 20px;
+    color:white;
+    font-size:24px;
+    font-weight:700;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.brand small{
+    display:block;
+    font-size:13px;
+}
+
+.sidebar .nav-link{
+    color:#d1d5db;
+    padding:14px 22px;
+    margin:6px 12px;
+    border-radius:12px;
+    transition:.3s;
+    font-weight:500;
+}
+
+.sidebar .nav-link:hover{
+    background:#2563eb;
+    color:white;
+    transform:translateX(5px);
+}
+
+.sidebar .nav-link i{
+    width:25px;
+}
+
+.main-wrapper{
+    margin-left:260px;
+    width:100%;
+    min-height:100vh;
+}
+
+.page-content{
+    padding:30px;
+}
+
+.card{
+    border:none;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+.table{
+    background:white;
+}
+
+.table thead{
+    background:#f8fafc;
+}
+
+.btn{
+    border-radius:10px;
+}
+
+.navbar{
+    margin:20px;
+}
+
+footer{
+    padding-bottom:25px;
+}
