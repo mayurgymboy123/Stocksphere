@@ -3,8 +3,9 @@ from decimal import Decimal
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from companies.models import Company
-from .forms import BuySharesForm
+from .forms import BuySharesForm, SellSharesForm
 from .models import Portfolio
+from transactions.models import Transaction
 
 @login_required
 def buy_shares(request, company_id):
@@ -31,6 +32,14 @@ def buy_shares(request, company_id):
                 portfolio.average_buy_price = (total_cost/total_quantity)
                 portfolio.quantity = total_quantity
                 portfolio.save()
+
+            Transaction.objects.create(
+                user=request.user,
+                company=company,
+                transaction_type=Transaction.BUY,
+                quantity=quantity,
+                price=buy_price,
+            )
                 
             messages.success(
                 request,
@@ -48,5 +57,95 @@ def buy_shares(request, company_id):
         {
             "form": form,
             "company": company,
+        },
+    )
+
+@login_required
+def portfolio_list(request):
+
+    portfolios = Portfolio.objects.filter(
+        user=request.user
+    ).select_related("company")
+
+    return render(
+        request,
+        "portfolio/portfolio_list.html",
+        {
+            "portfolios": portfolios,
+        },
+    )
+
+@login_required
+def sell_shares(request, portfolio_id):
+
+    portfolio = get_object_or_404(
+        Portfolio,
+        id=portfolio_id,
+        user=request.user,
+    )
+
+    if request.method == "POST":
+
+        form = SellSharesForm(request.POST)
+
+        if form.is_valid():
+
+            quantity = form.cleaned_data["quantity"]
+
+            if quantity > portfolio.quantity:
+
+                messages.error(
+                    request,
+                    "You don't have enough shares to sell."
+                )
+
+            elif quantity == portfolio.quantity:
+                Transaction.objects.create(
+                    user=request.user,
+                    company=portfolio.company,
+                    transaction_type=Transaction.SELL,
+                    quantity=quantity,
+                    price=portfolio.company.current_price,
+                )
+
+                portfolio.delete()
+
+                messages.success(
+                    request,
+                    "All shares sold successfully."
+                )
+
+                return redirect("portfolio:portfolio_list")
+
+            else:
+
+                portfolio.quantity -= quantity
+
+                portfolio.save()
+                Transaction.objects.create(
+                    user=request.user,
+                    company=portfolio.company,
+                    transaction_type=Transaction.SELL,
+                    quantity=quantity,
+                    price=portfolio.company.current_price,
+                )
+
+                messages.success(
+                    request,
+                    "Shares sold successfully."
+                )
+
+                return redirect("portfolio:portfolio_list")
+
+    else:
+
+        form = SellSharesForm()
+
+    return render(
+        request,
+        "portfolio/sell_shares.html",
+        {
+            "form": form,
+            "portfolio": portfolio,
         },
     )

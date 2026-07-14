@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}
+Transaction History
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-dark text-white">
+            <h3 class="mb-0">
+                Transaction History
+            </h3>
+        </div>
+
+        <div class="card-body">
+
+            {% if transactions %}
+
+            <table class="table table-striped table-hover align-middle">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Logo</th>
+                        <th>Company</th>
+                        <th>Type</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Date</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for transaction in transactions %}
+
+                    <tr>
+
+                        <td>
+
+                            {% if transaction.company.logo %}
+
+                            <img
+                                src="{{ transaction.company.logo.url }}"
+                                width="50"
+                                class="img-thumbnail">
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            <strong>{{ transaction.company.name }}</strong>
+
+                            <br>
+
+                            <small class="text-muted">
+
+                                {{ transaction.company.symbol }}
+
+                            </small>
+
+                        </td>
+
+                        <td>
+
+                            {% if transaction.transaction_type == "BUY" %}
+
+                                <span class="badge bg-success">
+
+                                    BUY
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-danger">
+
+                                    SELL
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            {{ transaction.quantity }}
+
+                        </td>
+
+                        <td>
+
+                            ₹ {{ transaction.price }}
+
+                        </td>
+
+                        <td>
+
+                            {{ transaction.created_at|date:"d M Y H:i" }}
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            {% else %}
+
+                <div class="alert alert-info">
+
+                    No transactions found.
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
