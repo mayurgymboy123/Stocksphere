@@ -1,42 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Profile</title>
-</head>
-    <body>
-        <h1> Wellcome {{request.user.first_name}}</h1>
-        <hr>
-        <p>
-            <strong>Username:</strong>
-            {{request.user.username}}
-        </p>
-        <p>
-            <strong>First name:</strong>
-            {{request.user.first_name}}
-        </p>
-        <p>
-            <strong>Last name:</strong>
-            {{request.user.last_name}}
-        </p>
-        <p>
-            <strong>Email:</strong>
-            {{ request.user.email }}
-        </p>
+{% extends "base.html" %}
 
-        <p>
-            <strong>Phone Number:</strong>
-            {{ request.user.phone_number }}
-        </p>
+{% block title %}
+My Profile
+{% endblock %}
 
-        <hr>
-        <a href="{% url 'users:edit_profile' %}">
-            Edit Profile
-        </a>
-        <br><br>
-        <a href="{% url 'users:logout' %}"> 
-            logout
-        </a>
+{% block content %}
 
-    </body>
+<h2>My Profile</h2>
 
-</html>
+<table class="table table-bordered">
+
+    <tr>
+        <th>Username</th>
+        <td>{{ request.user.username }}</td>
+    </tr>
+
+    <tr>
+        <th>First Name</th>
+        <td>{{ request.user.first_name }}</td>
+    </tr>
+
+    <tr>
+        <th>Last Name</th>
+        <td>{{ request.user.last_name }}</td>
+    </tr>
+
+    <tr>
+        <th>Email</th>
+        <td>{{ request.user.email }}</td>
+    </tr>
+
+    <tr>
+        <th>Phone</th>
+        <td>{{ request.user.phone_number }}</td>
+    </tr>
+
+</table>
+
+<a
+    href="{% url 'users:edit_profile' %}"
+    class="btn btn-warning">
+
+    Edit Profile
+
+</a>
+
+{% endblock %}

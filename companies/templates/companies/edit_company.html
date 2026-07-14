@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Company
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Edit Company</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form method="post" enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                <!-- Company Name -->
+                <div class="mb-3">
+                    <label for="{{ form.name.id_for_label }}" class="form-label">
+                        Company Name
+                    </label>
+                    {{ form.name }}
+                    {% if form.name.errors %}
+                        <div class="text-danger">
+                            {{ form.name.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Stock Symbol -->
+                <div class="mb-3">
+                    <label for="{{ form.symbol.id_for_label }}" class="form-label">
+                        Stock Symbol
+                    </label>
+                    {{ form.symbol }}
+                    {% if form.symbol.errors %}
+                        <div class="text-danger">
+                            {{ form.symbol.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Current Price -->
+                <div class="mb-3">
+                    <label for="{{ form.current_price.id_for_label }}" class="form-label">
+                        Current Price
+                    </label>
+                    {{ form.current_price }}
+                    {% if form.current_price.errors %}
+                        <div class="text-danger">
+                            {{ form.current_price.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Description -->
+                <div class="mb-3">
+                    <label for="{{ form.description.id_for_label }}" class="form-label">
+                        Description
+                    </label>
+                    {{ form.description }}
+                    {% if form.description.errors %}
+                        <div class="text-danger">
+                            {{ form.description.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Current Logo -->
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Current Logo
+                    </label>
+
+                    {% if company.logo %}
+                        <div class="mb-3">
+                            <img src="{{ company.logo.url }}"
+                                 alt="{{ company.name }}"
+                                 class="img-thumbnail"
+                                 width="150">
+                        </div>
+                    {% else %}
+                        <p class="text-muted">
+                            No logo uploaded.
+                        </p>
+                    {% endif %}
+
+                    <label for="{{ form.logo.id_for_label }}" class="form-label">
+                        Upload New Logo
+                    </label>
+
+                    {{ form.logo }}
+
+                    <div class="form-text">
+                        Leave this empty if you don't want to change the logo.
+                    </div>
+
+                    {% if form.logo.errors %}
+                        <div class="text-danger">
+                            {{ form.logo.errors }}
+                        </div>
+                    {% endif %}
+
+                </div>
+
+                <!-- Active Checkbox -->
+                <div class="form-check mb-4">
+                    {{ form.is_active }}
+                    <label class="form-check-label"
+                           for="{{ form.is_active.id_for_label }}">
+                        Active Company
+                    </label>
+
+                    {% if form.is_active.errors %}
+                        <div class="text-danger">
+                            {{ form.is_active.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Buttons -->
+                <button type="submit" class="btn btn-primary">
+                    Update Company
+                </button>
+
+                <a href="{% url 'companies:company_list' %}"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

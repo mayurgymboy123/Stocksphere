@@ -1,21 +1,22 @@
 {% extends "base.html" %}
 
 {% block title %}
-Edit Profile
+Create Company
 {% endblock %}
 
 {% block content %}
 
-<h2>Edit Profile</h2>
+<h2>Create Company</h2>
 
-<form method="post">
+<form
+    method="post"
+    enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button
-        class="btn btn-primary"
+        class="btn btn-success"
         type="submit">
-        Save Changes
+        Create Company
     </button>
 </form>
-
 {% endblock %}
