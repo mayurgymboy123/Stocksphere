@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", "tra%a7zs#-18q-3c=lc673%&7g(11eo@(_$e^sox=9v!7qks*9")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False") == "True"
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -39,6 +39,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 # Application definition
 
 INSTALLED_APPS = [
+    "dashboard",
     "transactions",
     'portfolio',
     'users',
@@ -89,21 +90,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-if os.environ.get("DATABASE_URL"):
-    DATABASES = {
-        "default": dj_database_url.parse(os.environ["DATABASE_URL"])
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "stocks",
+        "USER": "stocks_user",
+        "PASSWORD": "Stock123",
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": "stocks",
-            "USER": "stocks_user",
-            "PASSWORD": "Stock123",
-            "HOST": "127.0.0.1",
-            "PORT": "5432",
-        }
-    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

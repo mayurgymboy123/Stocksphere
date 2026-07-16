@@ -10,43 +10,46 @@ class CompanyForm(forms.ModelForm):
             "symbol",
             "logo",
             "current_price",
-            "description",
-            "is_active",
+            "exchange",
+            "sector",
+            "industry",
+            "currency",
+            "country",
         ]
+        
         widgets = {
-            "name": forms.TextInput(
-                attrs={
-                    "class": "form-control",
-                    "placeholder": "Enter company name",
-                }
-            ),
-            "symbol": forms.TextInput(
-                attrs={
-                    "class": "form-control",
-                    "placeholder": "Enter stock symbol",
-                }
-            ),
-            "current_price": forms.NumberInput(
-                attrs={
-                    "class": "form-control",
-                    "placeholder": "Enter current price",
-                }
-            ),
-            "description": forms.Textarea(
-                attrs={
-                    "class": "form-control",
-                    "rows": 4,
-                    "placeholder": "Enter company description",
-                }
-            ),
+            "name": forms.TextInput(attrs={
+                "class": "form-control",
+                "placeholder": "Company Name"
+            }),
+            "symbol": forms.TextInput(attrs={
+                "class": "form-control",
+                "placeholder": "Stock Symbol"
+            }),
             "logo": forms.ClearableFileInput(
                 attrs={
                     "class": "form-control",
                 }
             ),
-            "is_active": forms.CheckboxInput(
-                attrs={
-                    "class": "form-check-input",
-                }
-            ),
+            "current_price": forms.NumberInput(attrs={
+                "class": "form-control",
+                "step": "0.01"
+            }),
+            "exchange": forms.Select(attrs={
+                "class": "form-select"
+            }),
+            "sector": forms.TextInput(attrs={
+                "class": "form-control",
+                "placeholder": "Sector"
+            }),
+            "industry": forms.TextInput(attrs={
+                "class": "form-control",
+                "placeholder": "Industry"
+            }),
+            "currency": forms.TextInput(attrs={
+                "class": "form-control"
+            }),
+            "country": forms.TextInput(attrs={
+                "class": "form-control"
+            }),
         }
