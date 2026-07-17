@@ -21,6 +21,7 @@ class DashboardService:
                 return_percent = Decimal("0")
 
             holdings.append({"company": portfolio.company,
+                             "portfolio": portfolio,
                              "shares":portfolio.quantity,
                              "average_buy_price": portfolio.average_buy_price,
                              "current_price": portfolio.company.current_price,
