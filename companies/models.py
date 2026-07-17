@@ -24,9 +24,17 @@ class Company(models.Model):
         default=0
     )
 
+    EXCHANGE_CHOICES = [
+        ("NSE", "NSE"),
+        ("BSE", "BSE"),
+        ("NASDAQ", "NASDAQ"),
+        ("NYSE", "NYSE"),
+    ]
+
     exchange = models.CharField(
         max_length=20,
-        default="NSE"
+        choices=EXCHANGE_CHOICES,
+        default="NSE",
     )
 
     sector = models.CharField(
