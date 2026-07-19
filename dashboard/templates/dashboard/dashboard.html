@@ -24,29 +24,13 @@ Dashboard
     </h5>
 </div>
 
-<hr>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-5 g-4 mb-5">
 
-<h3>Holdings Debug</h3>
+    {% for holding in holdings|slice:":5" %}
 
-<div class="row g-4">
+        <div class="col">
 
-    {% for holding in holdings %}
-
-        <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
-
-            {% include "dashboard/components/holding_card.html" %}
-
-        </div>
-
-    {% empty %}
-
-        <div class="col-12">
-
-            <div class="alert alert-info">
-
-                No holdings available.
-
-            </div>
+            {% include "dashboard/components/stock_card.html" %}
 
         </div>
 
