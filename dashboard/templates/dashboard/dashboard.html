@@ -6,37 +6,138 @@ Dashboard
 {% endblock %}
 
 {% block extra_css %}
-
 <link
     rel="stylesheet"
     href="{% static 'dashboard/css/dashboard.css' %}">
-
 {% endblock %}
 
 {% block content %}
+
 <div class="container-fluid">
+
     <h2 class="mb-4">
         Dashboard
     </h2>
+
     <h5 class="text-secondary mb-4">
         Good Morning,
-        {{request.user.first_name|default:request.user.username}} 👋
+        {{ request.user.first_name|default:request.user.username }} 👋
     </h5>
-</div>
 
-<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-5 g-4 mb-5">
+    <!-- Stock Cards -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-5 g-4 mb-5">
 
-    {% for holding in holdings|slice:":5" %}
+        {% for holding in holdings|slice:":5" %}
 
-        <div class="col">
+            <div class="col">
 
-            {% include "dashboard/components/stock_card.html" %}
+                {% include "dashboard/components/stock_card.html" %}
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- Investment Chart + My Stocks -->
+    <div class="row g-4">
+
+        <div class="col-lg-8">
+
+            {% include "dashboard/components/investment_chart.html" %}
 
         </div>
 
-    {% endfor %}
+        <div class="col-lg-4">
+
+            {% include "dashboard/components/my_stocks.html" %}
+
+        </div>
+
+    </div>
 
 </div>
 
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+
+const ctx = document.getElementById('investmentChart');
+
+new Chart(ctx, {
+
+    type: 'line',
+
+    data: {
+
+        labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+
+        datasets: [{
+
+            label: 'Portfolio Value',
+
+            data: [42000, 43500, 44800, 46000, 45500, 47200, 48900],
+
+            borderWidth: 3,
+
+            tension: 0.4,
+
+            fill: true,
+
+            backgroundColor: 'rgba(37,99,235,.12)',
+
+            borderColor: '#2563eb',
+
+            pointRadius: 4,
+
+            pointHoverRadius: 6
+
+        }]
+
+    },
+
+    options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+
+        plugins: {
+
+            legend: {
+
+                display: false
+
+            }
+
+        },
+
+        scales: {
+
+            x: {
+
+                grid: {
+
+                    display: false
+
+                }
+
+            },
+
+            y: {
+
+                beginAtZero: false
+
+            }
+
+        }
+
+    }
+
+});
+
+</script>
 
 {% endblock %}

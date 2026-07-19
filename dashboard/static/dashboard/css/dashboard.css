@@ -20,59 +20,37 @@ body{
 }
 
 .holding-card{
-
     border-radius:18px;
-
     transition:.25s ease;
-
     background:#ffffff;
-
 }
 
 .holding-card:hover{
-
     transform:translateY(-4px);
-
     box-shadow:0 10px 20px rgba(0,0,0,.08);
-
 }
 
 .company-logo{
-
     width:36px;
-
     height:36px;
-
     border-radius:50%;
-
     object-fit:cover;
-
 }
 
 .info-row{
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     padding:4px 0;
-
     font-size:.9rem;
-
 }
 
 .info-row span{
-
     color:#6c757d;
-
 }
 
 .btn-sm{
-
     border-radius:10px;
-
 }
 
 /* ===========================
@@ -88,42 +66,27 @@ body{
 }
 
 .stock-card:hover{
-
     transform:translateY(-6px);
-
     box-shadow:0 15px 35px rgba(0,0,0,.12);
-
 }
 
 .stock-logo{
-
     width:50px;
     height:50px;
-
     border-radius:50%;
-
     object-fit:cover;
-
     border:1px solid #ececec;
-
 }
 
 .stock-name{
-
     margin:0;
-
     font-size:17px;
-
     font-weight:600;
-
 }
 
 .stock-symbol{
-
     color:#6b7280;
-
     font-size:14px;
-
 }
 
 .stock-chart{
@@ -137,17 +100,58 @@ body{
 }
 
 .stock-up{
-
     color:#16a34a;
-
     font-weight:600;
-
 }
 
 .stock-down{
-
     color:#dc2626;
-
     font-weight:600;
+}
 
+/* Dashboard Charts */
+.chart-container{
+    position: relative;
+    height: 260px;
+    width: 100%;
+}
+
+.chart-card .card-body{
+    padding:24px;
+}
+
+
+.stock-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid #eef2f7;
+}
+
+.stock-item:last-child{
+    border-bottom:none;
+}
+
+.stock-logo{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.stock-placeholder{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#2563eb;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:700;
+}
+
+.stock-item small{
+    font-size:.82rem;
 }
