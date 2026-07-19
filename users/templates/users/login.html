@@ -1,14 +1,73 @@
 {% extends "base.html" %}
+
 {% block title %}
 Login
 {% endblock %}
 
 {% block content %}
-    <h2> User Login </h2>
-    <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit" class="btn btn-primary">Login</button>
-    </form>
-{% endblock %}
 
+<div class="row justify-content-center">
+
+    <div class="col-md-6 col-lg-4">
+
+        <div class="card shadow-lg p-4">
+
+            <div class="text-center mb-4">
+
+                <h2 class="fw-bold">
+                    📈 StockSphere
+                </h2>
+
+                <p class="text-muted">
+                    Smart Portfolio Tracker
+                </p>
+
+            </div>
+
+            <h4 class="text-center mb-4">
+                User Login
+            </h4>
+
+            <form method="post">
+
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <div class="text-center">
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary px-5">
+
+                        Login
+
+                    </button>
+
+                </div>
+
+            </form>
+
+            <div class="text-center mt-4">
+
+                <span class="text-muted">
+                    Don't have an account?
+                </span>
+
+                <a
+                    href="{% url 'users:register' %}"
+                    class="fw-semibold text-decoration-none">
+
+                    Register
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
