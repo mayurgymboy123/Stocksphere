@@ -229,3 +229,38 @@ body{
 .card button{
     min-width:170px;
 }
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    margin-top: 5px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    max-height: 350px;
+    overflow-y: auto;
+    z-index: 9999;
+}
+
+.search-item{
+    padding:12px 16px;
+    cursor:pointer;
+    transition:.2s;
+    border-bottom:1px solid #f1f1f1;
+}
+
+.search-item:last-child{
+    border-bottom:none;
+}
+
+.search-item:hover{
+    background:#f8f9fa;
+}
+
+.search-symbol{
+    color:#6c757d;
+    font-size:13px;
+}

@@ -12,3 +12,5 @@ DATABASES = {
         default=config("DEV_DATABASE_URL")
     )
 }
+
+TWELVE_DATA_API_KEY = config("TWELVE_DATA_API_KEY")

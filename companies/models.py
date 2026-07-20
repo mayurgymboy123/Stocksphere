@@ -12,6 +12,13 @@ class Company(models.Model):
         unique=True
     )
 
+    yahoo_symbol = models.CharField(
+        max_length=30,
+        blank=True,
+        null=True,
+        help_text="Yahoo Finance ticker (e.g. AAPL, RELIANCE.NS)"
+    )
+
     logo = models.ImageField(
         upload_to="companies/",
         blank=True,
@@ -79,6 +86,11 @@ class Company(models.Model):
 
     updated_at = models.DateTimeField(
         auto_now=True
+    )
+
+    data_source = models.CharField(
+        max_length=20,
+        default="manual"
     )
 
     class Meta:

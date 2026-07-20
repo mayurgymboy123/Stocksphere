@@ -9,10 +9,20 @@
 
                 <i class="bi bi-search"></i>
 
-                <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Search stocks, companies..." />
+                <div class="search-box position-relative">
+
+                    <i class="bi bi-search"></i>
+
+                    <input
+                        id="companySearch"
+                        type="text"
+                        class="form-control"
+                        placeholder="Search stocks, companies..."
+                        autocomplete="off">
+                        
+                    <div id="searchResults" class="search-results d-none"></div>
+
+                </div>
 
             </div>
 
