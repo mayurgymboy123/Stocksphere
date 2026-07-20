@@ -18,3 +18,5 @@ DATABASES = {
 CSRF_TRUSTED_ORIGINS = [
     "https://*.onrender.com",
 ]
+
+TWELVE_DATA_API_KEY = config("TWELVE_DATA_API_KEY")
