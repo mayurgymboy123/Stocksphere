@@ -63,62 +63,50 @@ Dashboard
 {% block extra_js %}
 
 <script>
+    alert("error in js");
+    const ctx = document.getElementById('investmentChart');
 
-const ctx = document.getElementById('investmentChart');
+    new Chart(ctx, {
 
-new Chart(ctx, {
+        type: 'line',
 
-    type: 'line',
+        data: {
 
-    data: {
+            labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
 
-        labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+            datasets: [{
 
-        datasets: [{
+                label: 'Portfolio Value',
 
-            label: 'Portfolio Value',
+                data: [42000, 43500, 44800, 46000, 45500, 47200, 48900],
 
-            data: [42000, 43500, 44800, 46000, 45500, 47200, 48900],
+                borderWidth: 3,
 
-            borderWidth: 3,
+                tension: 0.4,
 
-            tension: 0.4,
+                fill: true,
 
-            fill: true,
+                backgroundColor: 'rgba(37,99,235,.12)',
 
-            backgroundColor: 'rgba(37,99,235,.12)',
+                borderColor: '#2563eb',
 
-            borderColor: '#2563eb',
+                pointRadius: 4,
 
-            pointRadius: 4,
+                pointHoverRadius: 6
 
-            pointHoverRadius: 6
-
-        }]
-
-    },
-
-    options: {
-
-        responsive: true,
-
-        maintainAspectRatio: false,
-
-        plugins: {
-
-            legend: {
-
-                display: false
-
-            }
+            }]
 
         },
 
-        scales: {
+        options: {
 
-            x: {
+            responsive: true,
 
-                grid: {
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
 
                     display: false
 
@@ -126,17 +114,29 @@ new Chart(ctx, {
 
             },
 
-            y: {
+            scales: {
 
-                beginAtZero: false
+                x: {
+
+                    grid: {
+
+                        display: false
+
+                    }
+
+                },
+
+                y: {
+
+                    beginAtZero: false
+
+                }
 
             }
 
         }
 
-    }
-
-});
+    });
 
 </script>
 
