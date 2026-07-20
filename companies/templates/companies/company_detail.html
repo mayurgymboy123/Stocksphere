@@ -4,6 +4,11 @@
 
 {% block content %}
 
+<a href="{% url 'companies:company_list' %}"
+   class="btn btn-outline-secondary mb-3">
+    ← Back to Companies
+</a>
+
 <div class="container mt-4">
 
     <div class="card shadow-sm">
@@ -49,11 +54,6 @@
                     </p>
 
                     <p>
-                        <strong>Yahoo Symbol:</strong>
-                        {{ company.yahoo_symbol }}
-                    </p>
-
-                    <p>
                         <strong>Sector:</strong>
                         {{ company.sector|default:"-" }}
                     </p>
@@ -83,13 +83,21 @@
 
             <hr>
 
-            <a
-                href="{% url 'portfolio:buy_shares' company.id %}"
-                class="btn btn-primary">
+            <div class="d-flex gap-2">
 
-                Buy Shares
+                <a
+                    href="{% url 'portfolio:buy_shares' company.id %}"
+                    class="btn btn-primary">
+                    Buy Shares
+                </a>
 
-            </a>
+                <a
+                    href="{% url 'companies:refresh_price' company.id %}"
+                    class="btn btn-outline-success">
+                    Refresh Price
+                </a>
+
+            </div>
 
         </div>
 

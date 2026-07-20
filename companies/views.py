@@ -6,6 +6,7 @@ from .models import Company
 from django.http import JsonResponse
 from companies.services.stock_service import StockService
 from companies.services.company_import_service import CompanyImportService
+from companies.services.yahoo_service import YahooFinanceService
 
 
 # Create your views here.
@@ -114,3 +115,21 @@ def import_company(request, symbol):
         return redirect("companies:company_detail", pk=company.pk)
 
     return redirect("dashboard:dashboard")
+
+def refresh_price(request, company_id):
+    company = get_object_or_404(Company, id=company_id)
+
+    if not company.yahoo_symbol:
+        messages.error(request, "Yahoo symbol is not available for this company.")
+        return redirect("companies:company_detail", company.id)
+
+    result = YahooFinanceService.get_price(company.yahoo_symbol)
+
+    if result["success"]:
+        company.current_price = result["price"]
+        company.save()
+        messages.success(request, "Price updated successfully.")
+    else:
+        messages.error(request, result["error"])
+
+    return redirect("companies:company_detail", company.id)
