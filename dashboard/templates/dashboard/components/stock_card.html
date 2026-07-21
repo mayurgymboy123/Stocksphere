@@ -8,7 +8,9 @@
             <img
                 src="{{ holding.company.logo.url }}"
                 class="stock-logo"
-                alt="{{ holding.company.name }}">
+                alt="{{ holding.company.name }}"
+                loading="lazy"
+                decoding="async">
             {% endif %}
 
             <div class="ms-3">
@@ -35,10 +37,7 @@
 
     <div class="stock-chart">
 
-        <canvas
-            id="chart{{ forloop.counter }}"
-            height="40">
-        </canvas>
+        <canvas id="chart{{ forloop.counter }}" class="mini-chart"></canvas>
 
     </div>
 

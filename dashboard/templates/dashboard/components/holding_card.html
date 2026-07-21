@@ -12,8 +12,10 @@
                 {% if holding.company.logo %}
                     <img
                         src="{{ holding.company.logo.url }}"
-                        class="company-logo me-2"
-                        alt="{{ holding.company.name }}">
+                        class="company-logo me-2 img-fluid"
+                        alt="{{ holding.company.name }}"
+                        loading="lazy"
+                        decoding="async">
                 {% endif %}
 
                 <div>

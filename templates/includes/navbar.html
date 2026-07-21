@@ -4,12 +4,14 @@
 
         <div class="d-flex align-items-center w-100">
 
+            <button id="sidebarToggle" class="btn btn-light me-3 d-lg-none" aria-label="Toggle menu">
+                <i class="bi bi-list"></i>
+            </button>
+
             <!-- Search Box -->
             <div class="search-box">
 
-                <i class="bi bi-search"></i>
-
-                <div class="search-box position-relative">
+                <div class="position-relative">
 
                     <i class="bi bi-search"></i>
 
@@ -19,7 +21,7 @@
                         class="form-control"
                         placeholder="Search stocks, companies..."
                         autocomplete="off">
-                        
+
                     <div id="searchResults" class="search-results d-none"></div>
 
                 </div>

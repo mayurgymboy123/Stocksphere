@@ -28,7 +28,9 @@ Sell Shares
                     <img
                         src="{{ portfolio.company.logo.url }}"
                         alt="{{ portfolio.company.name }}"
-                        class="img-thumbnail"
+                        class="img-fluid img-thumbnail"
+                        loading="lazy"
+                        decoding="async"
                         width="120">
                 </div>
             {% endif %}

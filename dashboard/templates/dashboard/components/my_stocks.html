@@ -24,11 +24,14 @@
 
                 <div class="d-flex align-items-center">
 
+
                     {% if holding.company.logo %}
 
                         <img
                             src="{{ holding.company.logo.url }}"
-                            class="stock-logo">
+                            class="stock-logo img-fluid"
+                            loading="lazy"
+                            decoding="async">
 
                     {% else %}
 

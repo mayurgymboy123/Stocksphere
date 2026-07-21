@@ -20,6 +20,7 @@ My Portfolio
 
             {% if portfolios %}
 
+                <div class="table-responsive">
                 <table class="table table-striped table-hover">
 
                     <thead>
@@ -50,8 +51,10 @@ My Portfolio
 
                                     <img
                                         src="{{ portfolio.company.logo.url }}"
+                                        class="img-fluid img-thumbnail"
                                         width="50"
-                                        class="img-thumbnail">
+                                        loading="lazy"
+                                        decoding="async">
 
                                 {% endif %}
 

@@ -16,6 +16,7 @@ Companies
 
 </a>
 
+<div class="table-responsive">
 <table class="table table-striped table-bordered">
 
     <thead>
@@ -44,9 +45,9 @@ Companies
 
             <td>
                 {% if company.logo %}
-                    <img src="{{ company.logo.url }}" alt="{{ company.name }}" width="60">
+                    <img src="{{ company.logo.url }}" alt="{{ company.name }}" class="img-fluid img-thumbnail" width="60" loading="lazy" decoding="async">
                 {% else %}
-                    <img src="{% static 'images/default_company_logo.png' %}" alt="No Logo" width="60">
+                    <img src="{% static 'images/default_company_logo.png' %}" alt="No Logo" class="img-fluid img-thumbnail" width="60" loading="lazy" decoding="async">
                 {% endif %}
 
             </td>
@@ -107,6 +108,7 @@ Companies
 
     </tbody>
 
-</table>
+ </table>
+</div>
 
 {% endblock %}

@@ -82,6 +82,20 @@
 
 {% block extra_js %}
 {% endblock %}
+<script>
+    (function(){
+        const toggle = document.getElementById('sidebarToggle');
+        const sidebar = document.querySelector('.sidebar');
+        if(toggle && sidebar){
+            toggle.addEventListener('click', ()=> sidebar.classList.toggle('open'));
+            document.addEventListener('click', (e)=>{
+                if(window.innerWidth <= 992){
+                    if(!sidebar.contains(e.target) && !toggle.contains(e.target)) sidebar.classList.remove('open');
+                }
+            });
+        }
+    })();
+</script>
 </body>
 
 </html>
