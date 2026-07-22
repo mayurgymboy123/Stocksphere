@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "dashboard_base.html" %}
 
 {% block title %}
 My Profile
@@ -8,6 +8,7 @@ My Profile
 
 <h2>My Profile</h2>
 
+<div class="table-responsive">
 <table class="table table-bordered">
 
     <tr>
@@ -35,7 +36,8 @@ My Profile
         <td>{{ request.user.phone_number }}</td>
     </tr>
 
-</table>
+ </table>
+</div>
 
 <a
     href="{% url 'users:edit_profile' %}"

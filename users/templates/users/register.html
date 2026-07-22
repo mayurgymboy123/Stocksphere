@@ -5,19 +5,69 @@ Register
 {% endblock %}
 
 {% block content %}
-<h2>User Registration</h2>
 
-<form method="post">
+<div class="row justify-content-center">
 
-    {% csrf_token %}
+    <div class="col-md-7 col-lg-5">
 
-    {{ form.as_p }}
+        <div class="card shadow-lg p-4">
 
-    <button
-        class="btn btn-success"
-        type="submit">
-        Register
-    </button>
+            <div class="text-center mb-4">
 
-</form>
+                <h2 class="fw-bold">
+                    📈 StockSphere
+                </h2>
+
+                <p class="text-muted">
+                    Smart Portfolio Tracker
+                </p>
+
+            </div>
+
+            <h4 class="text-center mb-4">
+                Create Account
+            </h4>
+
+            <form method="post">
+
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <div class="text-center">
+
+                    <button
+                        type="submit"
+                        class="btn btn-success px-5">
+
+                        Register
+
+                    </button>
+
+                </div>
+
+            </form>
+
+            <div class="text-center mt-4">
+
+                <span class="text-muted">
+                    Already have an account?
+                </span>
+
+                <a
+                    href="{% url 'users:login' %}"
+                    class="fw-semibold text-decoration-none">
+
+                    Login
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 {% endblock %}

@@ -1,0 +1,108 @@
+{% extends "dashboard_base.html" %}
+
+{% block title %}{{ company.name }}{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'companies:company_list' %}"
+   class="btn btn-outline-secondary mb-3">
+    ← Back to Companies
+</a>
+
+<div class="container mt-4">
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between align-items-center">
+
+                <div>
+
+                    <h2>{{ company.name }}</h2>
+
+                    <h5 class="text-muted">
+                        {{ company.symbol }}
+                    </h5>
+
+                </div>
+
+                <div class="text-end">
+
+                    <h3>
+                        {{ company.current_price }}
+                        {{ company.currency }}
+                    </h3>
+
+                    <p class="mb-0">
+                        {{ company.exchange }}
+                    </p>
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <p>
+                        <strong>Country:</strong>
+                        {{ company.country }}
+                    </p>
+
+                    <p>
+                        <strong>Sector:</strong>
+                        {{ company.sector|default:"-" }}
+                    </p>
+
+                    <p>
+                        <strong>Industry:</strong>
+                        {{ company.industry|default:"-" }}
+                    </p>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <p>
+                        <strong>Day Change:</strong>
+                        {{ company.day_change }}
+                    </p>
+
+                    <p>
+                        <strong>Day Change %:</strong>
+                        {{ company.day_change_percent }}%
+                    </p>
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="d-flex gap-2">
+
+                <a
+                    href="{% url 'portfolio:buy_shares' company.id %}"
+                    class="btn btn-primary">
+                    Buy Shares
+                </a>
+
+                <a
+                    href="{% url 'companies:refresh_price' company.id %}"
+                    class="btn btn-outline-success">
+                    Refresh Price
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

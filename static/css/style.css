@@ -2,6 +2,7 @@ body{
     margin:0;
     background:#f4f7fb;
     font-family:'Inter',sans-serif;
+    overflow-x:hidden;
 }
 
 .app-layout{
@@ -52,12 +53,16 @@ body{
 }
 
 .main-wrapper{
-    margin-left:260px;
-    width:100%;
+    margin-left:270px;
+    width:calc(100% - 270px);
     min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
 }
 
 .page-content{
+    flex:1;
     padding:30px;
 }
 
@@ -79,10 +84,229 @@ body{
     border-radius:10px;
 }
 
-.navbar{
-    margin:20px;
-}
-
 footer{
     padding-bottom:25px;
+}
+
+/* Search Box */
+
+.search-box{
+    width:420px;
+    position:relative;
+}
+
+.search-box input{
+    height:48px;
+    border-radius:14px;
+    padding-left:45px;
+    border:1px solid #e5e7eb;
+    box-shadow:none;
+}
+
+.search-box input:focus{
+    border-color:#4f46e5;
+    box-shadow:0 0 0 .15rem rgba(79,70,229,.15);
+}
+
+.search-box i{
+    position:absolute;
+    left:16px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#6b7280;
+    font-size:18px;
+}
+
+/* Ensure the results overlay matches the input width and shows full names */
+.search-box .position-relative{ position: relative; }
+.search-results{ position:absolute; top:100%; left:0; right:0; width:100%; box-sizing:border-box; z-index:9999; }
+.search-results .search-item{ padding:10px 14px; white-space:normal; display:flex; align-items:center; gap:10px; }
+.search-results .search-item .search-symbol{ color:#6c757d; font-size:0.85rem; }
+.search-results .search-item strong{ font-weight:600; color:#0f172a; }
+
+/* Mobile: center and style search like the example image (visual only) */
+
+body{
+    background:#f5f7fb;
+}
+
+.card{
+    border-radius:18px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h3{
+    font-weight:700;
+}
+
+.card h6{
+    font-size:.9rem;
+}
+
+.holding-card{
+
+    border-radius:18px;
+
+    transition:.25s ease;
+
+    background:#ffffff;
+
+}
+
+.holding-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+}
+
+.company-logo{
+
+    width:36px;
+
+    height:36px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.info-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:4px 0;
+
+    font-size:.9rem;
+
+}
+
+.info-row span{
+
+    color:#6c757d;
+
+}
+
+.btn-sm{
+
+    border-radius:10px;
+
+}
+
+/* ===========================
+   Authentication Pages
+=========================== */
+
+body{
+    background:#f4f7fb;
+}
+
+.card{
+    border:none;
+    border-radius:20px;
+    background-color: linear-gradient(135deg,#eef4ff,#dbeafe);
+}
+
+.card h2{
+    color:#2563eb;
+}
+
+.card input{
+    width:100%;
+    border-radius:10px;
+    padding:10px 15px;
+}
+
+.card label{
+    font-weight:500;
+    margin-bottom:6px;
+}
+
+.card button{
+    min-width:170px;
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    margin-top: 5px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    max-height: 350px;
+    overflow-y: auto;
+    z-index: 9999;
+}
+
+.search-item{
+    padding:12px 16px;
+    cursor:pointer;
+    transition:.2s;
+    border-bottom:1px solid #f1f1f1;
+}
+
+.search-item:last-child{
+    border-bottom:none;
+}
+
+.search-item:hover{
+    background:#f8f9fa;
+}
+
+.search-symbol{
+    color:#6c757d;
+    font-size:13px;
+}
+
+/* Global responsive helpers */
+.img-fluid{ max-width:100%; height:auto; }
+.img-thumbnail{ max-width:100%; height:auto; }
+.table-responsive{ overflow-x:auto; -webkit-overflow-scrolling: touch; }
+
+/* Responsive / off-canvas sidebar for small screens */
+@media (max-width: 991.98px) {
+    .sidebar{
+        left: -270px;
+        position: fixed;
+        top: 0;
+        height: 100vh;
+        width: 270px;
+        z-index: 1040;
+        transition: left .28s ease;
+        box-shadow: 5px 0 25px rgba(0,0,0,.12);
+    }
+
+    .sidebar.open{
+        left: 0;
+    }
+
+    .main-wrapper{
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .page-content{
+        padding: 18px;
+    }
+
+    .search-box{
+        width: 100%;
+    }
+
+    footer{
+        padding-bottom:20px;
+    }
 }

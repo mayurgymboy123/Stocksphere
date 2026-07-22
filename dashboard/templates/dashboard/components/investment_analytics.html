@@ -1,0 +1,127 @@
+<div class="card shadow-sm border-0 analytics-card">
+
+    <div class="card-body">
+
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <div>
+
+                <h5 class="fw-bold mb-0">
+                    Total Investment
+                </h5>
+
+                <small class="text-muted">
+                    Portfolio Growth
+                </small>
+
+            </div>
+
+            <select class="form-select form-select-sm analytics-filter">
+
+                <option selected>
+                    Last 7 Days
+                </option>
+
+                <option>
+                    Last 30 Days
+                </option>
+
+                <option>
+                    Last 3 Months
+                </option>
+
+                <option>
+                    Last Year
+                </option>
+
+                <option>
+                    All Time
+                </option>
+
+            </select>
+
+        </div>
+
+        <!-- KPI Row -->
+
+        <div class="row text-center mb-4">
+
+            <div class="col-md-4">
+
+                <small class="text-muted d-block">
+                    Invested Value
+                </small>
+
+                <h5 class="fw-bold">
+                    ₹0
+                </h5>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <small class="text-muted d-block">
+                    Current Value
+                </small>
+
+                <h5 class="fw-bold">
+                    ₹0
+                </h5>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <small class="text-muted d-block">
+                    Total Return
+                </small>
+
+                <h5 class="text-success fw-bold">
+                    ₹0
+                </h5>
+
+            </div>
+
+        </div>
+
+        <!-- Chart -->
+
+        <canvas
+            id="portfolioChart"
+            height="110">
+        </canvas>
+
+        <!-- Time Filter -->
+
+        <div class="d-flex justify-content-center gap-2 mt-4">
+
+            <button class="btn btn-primary btn-sm">
+                1D
+            </button>
+
+            <button class="btn btn-light btn-sm">
+                1W
+            </button>
+
+            <button class="btn btn-light btn-sm">
+                1M
+            </button>
+
+            <button class="btn btn-light btn-sm">
+                3M
+            </button>
+
+            <button class="btn btn-light btn-sm">
+                1Y
+            </button>
+
+            <button class="btn btn-light btn-sm">
+                ALL
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

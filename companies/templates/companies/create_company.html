@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "dashboard_base.html" %}
 
 {% block title %}
 Create Company
@@ -8,15 +8,33 @@ Create Company
 
 <h2>Create Company</h2>
 
-<form
-    method="post"
-    enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button
-        class="btn btn-success"
-        type="submit">
-        Create Company
-    </button>
-</form>
+{% if form.errors %}
+<div class="alert alert-danger">
+    {{ form.errors }}
+</div>
+{% endif %}
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Edit Company</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button
+                    class="btn btn-success"
+                    type="submit">
+                    Create Company
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
 {% endblock %}

@@ -1,10 +1,15 @@
-{% extends "base.html" %}
+{% extends "dashboard_base.html" %}
 
 {% block title %}
 Sell Shares
 {% endblock %}
 
 {% block content %}
+
+<a href="{% url 'portfolio:portfolio_list' %}"
+   class="btn btn-outline-secondary mb-3">
+    ← Back to Portfolio
+</a>
 
 <div class="container mt-4">
 
@@ -23,7 +28,9 @@ Sell Shares
                     <img
                         src="{{ portfolio.company.logo.url }}"
                         alt="{{ portfolio.company.name }}"
-                        class="img-thumbnail"
+                        class="img-fluid img-thumbnail"
+                        loading="lazy"
+                        decoding="async"
                         width="120">
                 </div>
             {% endif %}

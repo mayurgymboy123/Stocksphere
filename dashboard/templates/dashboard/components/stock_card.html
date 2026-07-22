@@ -1,0 +1,68 @@
+<div class="stock-card">
+
+    <div class="d-flex justify-content-between align-items-start">
+
+        <div class="d-flex align-items-center">
+
+            {% if holding.company.logo %}
+            <img
+                src="{{ holding.company.logo.url }}"
+                class="stock-logo"
+                alt="{{ holding.company.name }}"
+                loading="lazy"
+                decoding="async">
+            {% endif %}
+
+            <div class="ms-3">
+
+                <h6 class="stock-name">
+
+                    {{ holding.company.name }}
+
+                </h6>
+
+                <small class="stock-symbol">
+
+                    {{ holding.company.symbol }}
+
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Mini Graph -->
+
+    <div class="stock-chart">
+
+        <canvas id="chart{{ forloop.counter }}" class="mini-chart"></canvas>
+
+    </div>
+
+    <h3 class="stock-price">
+
+        {{ holding.company.current_price }}
+
+    </h3>
+
+    {% if holding.return_percent >= 0 %}
+
+        <span class="stock-up">
+
+            ▲ {{ holding.return_percent }}%
+
+        </span>
+
+    {% else %}
+
+        <span class="stock-down">
+
+            ▼ {{ holding.return_percent }}%
+
+        </span>
+
+    {% endif %}
+
+</div>
